@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <title>EDIT | FORM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        select {
+            height: 40px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            form {
+                padding: 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>EDIT STUDENT FORM</h1>
+    <form action="/edit/{{ studentdata['student_id'] }}" method="post" enctype="multipart/form-data">
+        
+        <label>Firstname:</label>
+        <input type="text" name="fname" placeholder="Firstname" value="{{ studentdata['first_name'] }}">
+        <br><br>
+
+        <label>Middlename:</label>
+        <input type="text" name="midname" placeholder="Middlename" value="{{ studentdata['middle_name'] }}">
+        <br><br>
+
+        <label>Lastname:</label>
+        <input type="text" name="lname" placeholder="Lastname" value="{{ studentdata['last_name'] }}">
+        <br><br>
+
+        <label>Phone Number:</label>
+        <input type="number" name="tel" placeholder="Contact" value="{{ studentdata['contact'] }}">
+        <br><br>
+
+        <label>Gender:</label>
+        <select name="gen">
+            <option disabled>Select Gender</option>
+            <option {% if studentdata['gender'] == 'Female' %}selected{% endif %}>Female</option>
+            <option {% if studentdata['gender'] == 'Male' %}selected{% endif %}>Male</option>
+        </select>
+        <br><br>
+
+        <label>Birthdate:</label>
+        <input type="date" name="bdate" value="{{ studentdata['birth_date'] }}">
+        <br><br>
+
+        <label>Course:</label>
+        <select name="cname">
+            <option disabled>Select Course</option>
+            <option {% if studentdata['course'] == 'BS Information Technology' %}selected{% endif %}>BS Information Technology</option>
+            <option {% if studentdata['course'] == 'BS Computer Science' %}selected{% endif %}>BS Computer Science</option>
+            <option {% if studentdata['course'] == 'BS Business Administration' %}selected{% endif %}>BS Business Administration</option>
+        </select>
+        <br><br>
+
+        <label>Institutional Email:</label>
+        <input type="email" name="mail" placeholder="@aclcbutuan.edu.ph" value="{{ studentdata['institutional_email'] }}">
+        <br><br>
+   
+        <label>Student Number:</label>
+        <input type="text" name="studnum" maxlength="11" placeholder="USN" value="{{ studentdata['student_number'] }}">
+        <br><br>
+
+        <label>Old Password:</label>
+        <input type="show password" name="oldpass" placeholder="Old Password" value="{{ studentdata['password'] }}" >
+
+        <label>New Password:</label>
+        <input type="password" name="pass" placeholder="Password">
+        <br><br>
+
+        <label>Upload New Photo:</label>
+        <input type="file" name="photo" accept=".png, .jpeg, .jpg">
+        <br><br>
+
+        <input type="submit" value="UPDATE">
+    </form>  
+</body>
+</html>

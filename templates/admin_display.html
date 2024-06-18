@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN | DASHBOARD</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            color: #495057;
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button.primary {
+            background-color: #007bff;
+            color: white;
+            border-radius: 10px;
+            padding: 5px 12px;
+        }
+
+        button.secondary {
+            background-color: red;
+            color: white;
+            border-radius: 10px;
+            padding: 5px 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px; 
+            text-align: left;
+            border: 1px solid #dee2e6;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a.primary {
+            color: #007bff;
+        }
+
+        a.secondary {
+            color: #6c757d;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+        <script>
+            function confirmActivation() {
+                return confirm("Are you sure you want to activate?");
+            }
+    
+            function confirmDeactivation() {
+                return confirm("Are you sure you want to deactivate?");
+            }
+        </script>
+</head>
+
+<body>
+    <h1>LIST OF STUDENTS</h1>
+
+    <form action="{{ url_for('search_students') }}" method="POST">
+        <label for="search">STUDENT NUMBER :</label>
+        <input type="text" id="search" name="search" placeholder="Search">
+        <button type="submit">Search</button>
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Student Number</th>
+            <th>Email</th>
+            <th>Operation</th>
+            <th>Activation</th>
+            <th>Deactivation</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student[1] }} {{ student[3] }}</td>
+            <td>{{ student[9] }}</td>
+            <td>{{ student[7] }}</td>
+            <td>
+                <a href="{{ url_for('view_student', student_id=student[0]) }}" class="primary">View</a>
+            </td>
+            <td>
+                <form method="post" action="{{ url_for('activate_student', student_id=student[0]) }}" onsubmit="return confirmActivation()">
+                    <button type="submit" name="action" value="activate" class="primary">Activate</button>
+                </form>
+            </td>
+            <td>
+                <form method="post" action="{{ url_for('deactivate_student', student_id=student[0]) }}" onsubmit="return confirmDeactivation()">
+                    <button type="submit" name="action" value="deactivate" class="secondary">Deactivate</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

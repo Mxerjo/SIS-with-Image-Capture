@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | View Student</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/boxicons/2.0.7/css/boxicons.min.css">
+    <style>
+  * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #164863;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        h4 {
+            font-weight: bold;
+            padding: 30px 0;
+            text-align: center;
+            color: #007bff;
+        }
+
+        .card {
+            margin-top: 20px;
+            border: 1px solid #007bff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin: 20px auto;
+            display: block;
+            border: 3px solid #007bff;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-control {
+            width: 75%;
+            margin: 0 auto; /* Center the form control */
+        }
+
+        .text-right {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container light-style flex-grow-1 container-p-y">
+        <div class="card overflow-hidden">
+            <div class="row no-gutters row-bordered row-border-light">
+                <div class="col-md-3 pt-0">
+                </div>
+                <div class="col-md-9">
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="account-general">
+                            <h4 class="font-weight-bold py-3 mb-4">Student Details</h4>
+                            <div class="card-body media align-items-center">
+                                <img src="/static/uploads/{{student['photo_path'] }}" alt="User Photo">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Firstname : {{ student['first_name'] }}</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Middlename : {{ student['middle_name'] }}</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Lastname : {{ student['last_name'] }}</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone Number : {{ student['contact'] }}</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Gender : {{ student['gender'] }}</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Birthdate : {{ student['birth_date'] }}</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Student Number : {{ student['student_number'] }}</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password : {{ student['password'] }}</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Course : {{ student['course'] }}</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Institutional Email : {{ student['institutional_email'] }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

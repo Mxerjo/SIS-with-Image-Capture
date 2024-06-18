@@ -1,0 +1,28 @@
+SUBJECT: IT MAJOR ELECTIVE 1 (WEB DEVELOPMENT)
+TITLE: Student Information System with Live Capture(Image Upload)
+SCHOOL: ACLC COLLEGE OF BUTUAN
+INSTRUCTOR: Daryll A. Cabagay
+
+GROUP MEMBER:
+Marjore I. Jamodiong - Developer
+Haidee M. Yadao - Assistant Developer
+Diana F. Gonia - Researcher
+
+DATA ISSUED:
+December 11, 2023
+
+ADMIN ACCOUNT
+Username: admin
+Password: 1234
+
+DATABASE NAME
+project_db
+
+FLASK RUN
+py is.py
+
+DATABASE USED
+MYSQL Xampp
+
+LACKING
+- The upload photo doesn't update the new uploaded photo
